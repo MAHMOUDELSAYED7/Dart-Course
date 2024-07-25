@@ -1,99 +1,108 @@
-//! Data Types in Dart:
+//! Arithmetic, Relational, and Logical Operations in Dart:
 
 void main() {
-// Dart is a statically-typed language, meaning each variable must have a specific type.
-// Here are some of the fundamental data types in Dart:
+//! Arithmetic Operations
+// These operators perform basic mathematical calculations.
 
-//! 1. int
-// Represents integer values (whole numbers).
-  int age = 25;
-  print('Age: $age'); // Outputs: Age: 25
-  
+  int a = 10;
+  int b = 5;
+
+// Addition: Adds two numbers.
+  int sum = a + b;
+  print('Addition: $a + $b = $sum'); // Output: Addition: 10 + 5 = 15
+
 //?---------------------------------------------------------------------------------------
 
-//! 2. double
-// Represents floating-point numbers (numbers with decimal points).
-  double height = 5.9;
-  print('Height: $height'); // Outputs: Height: 5.9
-  
+// Subtraction: Subtracts the second number from the first.
+  int difference = a - b;
+  print(
+      'Subtraction: $a - $b = $difference'); // Output: Subtraction: 10 - 5 = 5
+
 //?---------------------------------------------------------------------------------------
 
-//! 3. num
-// A superclass for both `int` and `double`. Can hold either type.
-  num weight = 70; // Initially an integer.
-  print('Weight: $weight'); // Outputs: Weight: 70
-  weight = 70.5; // Can also be a double.
-  print('Updated Weight: $weight'); // Outputs: Updated Weight: 70.5
-  
+// Multiplication: Multiplies two numbers.
+  int product = a * b;
+  print(
+      'Multiplication: $a * $b = $product'); // Output: Multiplication: 10 * 5 = 50
+
 //?---------------------------------------------------------------------------------------
 
-//! 4. String
-// Represents a sequence of characters (text).
-  String name = 'Alice';
-  print('Name: $name'); // Outputs: Name: Alice
-  
+// Division: Divides the first number by the second.
+  double quotient = a / b;
+  print('Division: $a / $b = $quotient'); // Output: Division: 10 / 5 = 2.0
+
 //?---------------------------------------------------------------------------------------
 
-//! 5. bool
-// Represents boolean values, either `true` or `false`.
-  bool isStudent = true;
-  print('Is Student: $isStudent'); // Outputs: Is Student: true
-  
+// Modulus: Finds the remainder of the division of the first number by the second.
+  int remainder = a % b;
+  print('Modulus: $a % $b = $remainder'); // Output: Modulus: 10 % 5 = 0
+
 //?---------------------------------------------------------------------------------------
 
-//! 6. dynamic
-// Represents a variable whose type can change at runtime.
-// Avoid using `dynamic` when possible, as it defeats the purpose of static typing.
-  dynamic variable = 'Hello';
-  print('Dynamic variable: $variable'); // Outputs: Dynamic variable: Hello
-  variable = 123;
-  print('Dynamic variable: $variable'); // Outputs: Dynamic variable: 123
-  
+//! Relational Operations
+// These operators compare two values and return a boolean result.
+
+  bool isEqual = a == b;
+  print('Equal: $a == $b -> $isEqual'); // Output: Equal: 10 == 5 -> false
+
 //?---------------------------------------------------------------------------------------
 
-//! 7. Runes
-// Represents Unicode code points in a `String`.
-// Useful for working with special characters or emojis.
-  String emoji = '😊';
-  print('Emoji: $emoji'); // Outputs: Emoji: 😊
+  bool isNotEqual = a != b;
+  print(
+      'Not Equal: $a != $b -> $isNotEqual'); // Output: Not Equal: 10 != 5 -> true
 
-// You can access the Unicode code points of a string using runes.
-  Runes input = Runes('\u{1F600}'); // Unicode for 😀
-  print(String.fromCharCodes(input)); // Outputs: 😀
-  
 //?---------------------------------------------------------------------------------------
 
-//! 8. Object
-// The base class for all Dart objects. Any type can be assigned to an `Object` variable.
-  Object anyValue = 'Hello';
-  print('Object value: $anyValue'); // Outputs: Object value: Hello
-  anyValue = 123;
-  print('Object value: $anyValue'); // Outputs: Object value: 123
-  
+  bool isGreater = a > b;
+  print('Greater: $a > $b -> $isGreater'); // Output: Greater: 10 > 5 -> true
+
 //?---------------------------------------------------------------------------------------
 
-//! 9. Symbol
-// Represents an operator or identifier declared in a Dart program.
-// Useful for reflection, allowing you to refer to identifiers by name.
-  
+  bool isLess = a < b;
+  print('Less: $a < $b -> $isLess'); // Output: Less: 10 < 5 -> false
+
 //?---------------------------------------------------------------------------------------
 
-  Symbol libraryName = #myLibrary;
-  print('Symbol: $libraryName'); // Outputs: Symbol: Symbol("myLibrary")
+  bool isGreaterOrEqual = a >= b;
+  print(
+      'Greater or Equal: $a >= $b -> $isGreaterOrEqual'); // Output: Greater or Equal: 10 >= 5 -> true
 
-// These are the basic data types in Dart, providing a foundation for variable declarations and type safety.
+//?---------------------------------------------------------------------------------------
 
-/*
-! In summary:
+  bool isLessOrEqual = a <= b;
+  print(
+      'Less or Equal: $a <= $b -> $isLessOrEqual'); // Output: Less or Equal: 10 <= 5 -> false
 
-int: Integer values.
-double: Floating-point numbers.
-num: Can hold either int or double values.
-String: Sequence of characters.
-bool: Boolean values (true or false).
-dynamic: A variable whose type can change at runtime.
-Runes: Unicode code points.
-Symbol: Operators or identifiers in Dart.
-Object: The base class for all Dart objects.
- */
+//?---------------------------------------------------------------------------------------
+
+//! Logical Operations
+// These operators perform logical operations on boolean values.
+
+  bool trueValue = true;
+  bool falseValue = false;
+
+// AND: Returns true if both operands are true.
+  bool andResult = trueValue && falseValue;
+  print(
+      'AND: $trueValue && $falseValue -> $andResult'); // Output: AND: true && false -> false
+
+//?---------------------------------------------------------------------------------------
+
+// OR: Returns true if at least one operand is true.
+  bool orResult = trueValue || falseValue;
+  print(
+      'OR: $trueValue || $falseValue -> $orResult'); // Output: OR: true || false -> true
+
+//?---------------------------------------------------------------------------------------
+
+// NOT: Inverts the boolean value.
+  bool notResult = !trueValue;
+  print('NOT: !$trueValue -> $notResult'); // Output: NOT: !true -> false
+
+//?---------------------------------------------------------------------------------------
+
+//! Summary:
+// - Arithmetic operations perform basic math calculations: addition, subtraction, multiplication, division, and modulus.
+// - Relational operations compare values and yield boolean results: equality, inequality, greater than, less than, greater or equal, and less or equal.
+// - Logical operations work with boolean values to perform AND, OR, and NOT operations.
 }
