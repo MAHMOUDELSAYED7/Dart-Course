@@ -1,79 +1,76 @@
-//! Variables in Dart:
+//! Print in Dart:
 
-/*
-* Variables are used to store data that can be referenced and manipulated
-* throughout a program. Dart supports various ways to declare variables, each with its own specific use case and behavior.
-* In this section, we will explore how to declare and use variables in Dart,
-* and discuss the differences between `var`, `final`, and `const`.
-*/
 void main() {
-//! var
-// `var` is used to declare a variable without specifying its type.
-// Dart will infer the type based on the assigned value.
-
-  var name = 'mahmoud'; // Dart infers `name` to be of type `String`.
-
-  var age = 30; // Dart infers `age` to be of type `int`.
-
-// Variables declared with `var` can be reassigned new values.
-
-  name = 'hafeez'; // This is allowed because `var` allows reassignment.
-
-  age = 21; // This is allowed because `var` allows reassignment.
+// The `print` function in Dart is used to display output to the console.
+// It takes a value or expression and writes it to the standard output.
+// This is commonly used for debugging or providing information during development.
 
 //?---------------------------------------------------------------------------------------
 
-//! final
-// `final` is used to declare a variable that can only be set once.
-// Once a `final` variable is assigned a value, it cannot be reassigned.
-
-  final city = 'Cairo'; //* Dart infers `city` to be of type `String`.
-
-// Trying to reassign a `final` variable will result in an error.
-// city = 'Los Angeles';  // Error: `city` is final and cannot be reassigned.
+// Example 1: Printing a static string message to the console.
+  print('Hello, Dart!');
+// Output: Hello, Dart!
 
 //?---------------------------------------------------------------------------------------
 
-//! const
-// `const` is used to declare compile-time constants.
-// The value of a `const` variable must be known at compile time and
-// cannot be changed afterwards.
-
-  const pi = 3.14; // Dart infers `pi` to be of type `double`.
-
-// Trying to reassign a `const` variable will result in an error.
-// pi = 3.14;  // Error: `pi` is constant and cannot be reassigned.
-
-// `const` variables are implicitly `final`, but they are more restrictive
-// because their values must be known at compile time.
+// Example 2: Printing a result of an arithmetic operation directly.
+  print(5 + 3);
+// Output: 8
 
 //?---------------------------------------------------------------------------------------
 
-//! What is the Differences Between var, final, and const ??
+// Example 3: Printing the result of a method call.
+  print('Today is a great day');
+// Output: TODAY IS A GREAT DAY
 
-//! 1. `var`
-// - Can be reassigned new values.
-// - Type is inferred based on the initial value assigned.
-// Example:
-// var name = 'mahmoud';
-//  name = 'hafeez'; // Allowed.
+//?---------------------------------------------------------------------------------------
 
-//! 2. `final`
-// - Can only be assigned once.
-// - Can be assigned a value at runtime.
-// Example:
-//  final age = 30;
-// age = 31;  // Error: `age` is final and cannot be reassigned.
+// Example 4: Printing the result of a simple expression.
+  print(2 * 7 - 4);
+// Output: 10
 
-//! 3. `const`
-// - Can only be assigned once.
-// - Value must be known at compile time (cannot depend on runtime values).
-// Example:
-//  const pi = 3.14;
-// pi = 3.14;  // Error: `pi` is constant and cannot be reassigned.
+//?---------------------------------------------------------------------------------------
+
+// Example 5: Printing the result of a complex expression involving multiple operations.
+  print((3 + 2) * (7 - 4) / 2);
+// Output: 7.5
+
+//?---------------------------------------------------------------------------------------
+
+// Declare a variable using `var` and assign a string value.
+// Dart infers the type based on the initial value.
+  var greeting = 'Hello, Dart!';
+
+// Use `print` to display the value of the `greeting` variable to the console.
+  print(greeting); // Output: Hello, Dart!
+
+//?---------------------------------------------------------------------------------------
+
+// Declare another variable with a numerical value.
+  var age = 25;
+
+// Print the numerical value to the console.
+  print(age); // Output: 25
+
+//?---------------------------------------------------------------------------------------
+
+// You can also use `print` to concatenate strings and variables.
+  var name = 'mahmoud';
+  age = 30;
+  print('Name: ' + name + ', Age: ' + '$age'); // Output: Name: Alice, Age: 30
+
+// Dart provides string interpolation for a more concise and readable way to include variables in strings.
+  print('Name: $name, Age: $age'); // Output: Name: Alice, Age: 30
+
+// You can also print the result of expressions.
+  var a = 10;
+  var b = 20;
+  print(
+      'The sum of $a and $b is ${a + b}.'); // Output: The sum of 10 and 20 is 30.
 
 //! Summary:
-// - Use `var` when you need a variable whose value can change.
-// - Use `final` for a variable whose value should not change once assigned.
-// - Use `const` for compile-time constants.
+// - `print` outputs data to the console.
+// - The `print` function outputs a given value or expression to the console.
+// - `var` allows you to declare variables without specifying a type.
+// - Use string interpolation or concatenation to include variable values in the output.
 }
