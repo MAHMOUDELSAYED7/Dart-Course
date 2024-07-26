@@ -1,115 +1,152 @@
 //!======================================================================================
-//!  Complete the missing parts
+//!  Introduction to Object-Oriented Programming (OOP) in Dart
 //!======================================================================================
+/*
+! What is OOP?
+ Object-Oriented Programming (OOP) is a programming paradigm based on the concept of "objects."
+ These objects contain data in the form of fields (often known as attributes or properties) and
+ code in the form of procedures (often known as methods). OOP is designed to provide a clear
+ structure for programs, making it easier to maintain and develop software.
+
+! Advantages of OOP
+* Modularity:
+ The source code for an object can be written and maintained independently of the source code for other objects.
+ Once created, an object can be easily passed around inside the system.
+
+* Reusability:
+ Objects can be reused across programs. This promotes code reuse and can lead to a reduction in redundancy.
+* Scalability:
+ OOP methods make it easier to manage larger software projects.
+* Maintainability:
+ The separation of concerns within a system (into objects) means that changes to one part of thesystem often do not
+ require changes to other parts.
+* Abstraction:
+ OOP allows for greater flexibility and abstraction. It helps in hiding the complex reality while exposing only the necessary parts.
+! Why Use OOP?
+* Organized Code: OOP helps in organizing the code better. This makes the development process more manageable.
+* Problem-Solving: OOP provides a clear modular structure for programs which is ideal for solving complex problems.
+* Real-World Modeling: OOP provides a clear structure that is more aligned with real-world entities and relationships.
+ */
+//?--------------------------------------------------------------------------------------------------------------------
+
+//!  What is a Class?
+// A class is a blueprint for creating objects. It defines a set of properties and methods that are common to all objects of that type.
+
+//! What is an Object?
+// An object is an instance of a class. It is a self-contained component that consists of properties and methods to make a particular type of data useful.
+
+//?--------------------------------------------------------------------------------------------------------------------
+
 void main() {
-//! 1. Asserting Non-null Value (!)
-// In Dart, ! is used to assert that a nullable value is not null. This is known as the null assertion operator.
-// When you use !, you are telling Dart that you are confident the value is not null, and it should treat it as non-nullable.
+  //! Create an object of the Car class
+  Car myCar = Car();
 
-// Declaring a nullable string
-  String? name = 'Mahmoud El Sayed';
+  // Assign values to properties
+  myCar.color = 'Red';
+  myCar.model = 'Toyota';
+  myCar.year = 2020;
 
-// Asserting that `name` is not null and printing it
-  print(name!); // Output: Mahmoud El Sayed
+  // Accessing properties
+  print(myCar.color); // Output: Red
 
-// If `name` were null, this would throw a runtime error
-// String? name = null;
-// print(name!); // Throws: Unhandled exception: Null check operator used on a null value
+  // Calling methods
+  myCar.display(); // Output: Color: Red, Model: Toyota, Year: 2020
 
-//?--------------------------------------------------------------------------------------
+//?--------------------------------------------------------------------------------------------------------------------
 
-//! 2. Assert: Testing the function
-  checkAge(25); // Output: Age is 25
-  checkAge(-5); // Throws: AssertionError: Age cannot be negative
-  checkPositiveNumber(10); // Valid number
-  checkPositiveNumber(-3); // Invalid number
-  checkStringLength('Hello'); // Valid string
-  checkStringLength('Hi'); // Invalid string length
-  checkList([1, 2, 3]); // Valid list
-  checkList([]); // Invalid list
-  checkNonNullValue('Hello'); // Valid value
-  checkNonNullValue(null); // Invalid value
+  //! Create an object of the Student class
+  Student student1 = Student();
 
-//?--------------------------------------------------------------------------------------
-//! 3. Cascade (..)
-// The cascade operator (..) allows you to perform multiple operations on the same object,
-// in a chain of method calls
+  // Assign values to properties
+  student1.name = 'Mahmoud';
+  student1.age = 20;
+  student1.grade = 75.0;
 
-  // Define a map
-  Map<String, dynamic> person = <String, dynamic>{};
+  // Accessing properties
+  print(student1.name); // Output: Mahmoud
+  print(student1.age); // Output: 20
+  print(student1.grade); // Output: 75.0
 
-  // Using cascade to set multiple key-value pairs on the same map
-  person
-    ..['name'] = 'Alice'
-    ..['age'] = 30
-    ..['city'] = 'New York';
+  // Calling methods
+  student1.display(); // Output: Name: Mahmoud, Age: 20, Grade: 75.0
 
-  print(person); // Output: {name: Alice, age: 30, city: New York}
+  // Checking if the student has passed
+  if (student1.hasPassed()) {
+    print('${student1.name} has passed.'); // Output: Mahmoud has passed.
+  } else {
+    print('${student1.name} has not passed.');
+  }
 
-//?--------------------------------------------------------------------------------------
+  //?--------------------------------------------------------------------------------------------------------------------
 
-//! 4. Spread Operator (...)
-// The spread operator (...) allows you to insert all elements of a collection into another collection.
-//It is useful for combining lists or maps.
+  //! Create an object of the Book class
+  Book book1 = Book();
 
-// Define two lists
-  var list1 = [1, 2, 3];
-  var list2 = [4, 5, 6];
+  // Assign values to properties
+  book1.title = '1984';
+  book1.author = 'George Orwell';
+  book1.price = 9.99;
 
-  // Using the spread operator to combine lists
-  var combinedList = [...list1, ...list2];
-
-  // Print the combined list
-  print(combinedList); // Output: [1, 2, 3, 4, 5, 6]
+  // Access properties and call methods
+  book1.display(); // Output: Title: 1984, Author: George Orwell, Price: $9.99
 }
 
-//?--------------------------------------------------------------------------------------
+//?--------------------------------------------------------------------------------------------------------------------
 
-//! 2. Assert
-// The assert statement is used to test if a condition is true at runtime. If the condition is false,
-// it throws an AssertionError. It’s primarily used for debugging purposes.
-//! Function to check age
-void checkAge(int age) {
-  // Asserts that age must be non-negative
-  assert(age >= 0, 'Age cannot be negative');
-  print('Age is $age');
+//! How to Create a Class in Dart
+
+//! Define a class named Car
+class Car {
+  // Properties of the class
+  String? color;
+  String? model;
+  int? year;
+
+  // Method to display car details
+  void display() {
+    print('Color: $color, Model: $model, Year: $year');
+  }
 }
 
-//?--------------------------------------------------------------------------------------
+//?--------------------------------------------------------------------------------------------------------------------
 
-//! Function to check if a number is positive using assert
-void checkPositiveNumber(int number) {
-  // Assert that the number must be positive
-  assert(number > 0, 'Number must be positive');
-  print('Number is $number');
+//! Define a class named Student
+class Student {
+  // Properties of the class
+  String? name;
+  int? age;
+  double? grade;
+
+  // Method to display student details
+  void display() {
+    print('Name: $name, Age: $age, Grade: $grade');
+  }
+
+  // Method to check if the student has passed
+  bool hasPassed() {
+    return (grade ??= 0) >= 60;
+  }
 }
 
-//?--------------------------------------------------------------------------------------
+//?--------------------------------------------------------------------------------------------------------------------
 
-//! Function to check if a string has more than 3 characters
-void checkStringLength(String text) {
-  // Assert that the string length must be more than 3 characters
-  assert(text.length > 3, 'String must have more than 3 characters');
-  print('String is: $text');
+//! Define a class named Book
+class Book {
+  // Properties
+  String? title;
+  String? author;
+  double? price;
+
+  // Method to display book details
+  void display() {
+    print('Title: $title, Author: $author, Price: \$$price');
+  }
 }
 
-//?--------------------------------------------------------------------------------------
 
-//! Function to check if a list is non-empty
-void checkList(List<int> numbers) {
-  // Assert that the list must not be empty
-  assert(numbers.isNotEmpty, 'List must not be empty');
-  print('List contains: ${numbers.length} elements');
-}
-
-//?--------------------------------------------------------------------------------------
-
-//! Function to check if a value is non-null
-void checkNonNullValue(String? value) {
-  // Assert that the value must not be null
-  assert(value != null, 'Value must not be null');
-  print('Value is: $value');
-}
-
-//?--------------------------------------------------------------------------------------
-
+/*
+! Conclusion
+ OOP in Dart, like in many other languages, helps in organizing code into manageable, reusable components.
+ By using classes and objects, you can model real-world scenarios, encapsulate data and behaviors,
+ and promote code reusability and maintainability.
+ */
