@@ -1,174 +1,115 @@
 //!======================================================================================
-//!  Exception Handling  in Dart
+//!  Complete the missing parts
 //!======================================================================================
-
 void main() {
-  //! Demonstrating throwing and handling exceptions
+//! 1. Asserting Non-null Value (!)
+// In Dart, ! is used to assert that a nullable value is not null. This is known as the null assertion operator.
+// When you use !, you are telling Dart that you are confident the value is not null, and it should treat it as non-nullable.
 
-  //! check Positive Number Handling
-  try {
-    // This will throw an exception as the number is negative
-    checkPositiveNumber(-5);
-  } catch (e) {
-    // Handle the exception thrown by checkPositiveNumber
-    print('Caught an exception: $e');
-  }
+// Declaring a nullable string
+  String? name = 'Mahmoud El Sayed';
 
-//?--------------------------------------------------------------------------------------
+// Asserting that `name` is not null and printing it
+  print(name!); // Output: Mahmoud El Sayed
 
-  //! Handling division by zero
-  // This will catch the division by zero error and print a message
-  divideNumbers(10, 0);
+// If `name` were null, this would throw a runtime error
+// String? name = null;
+// print(name!); // Throws: Unhandled exception: Null check operator used on a null value
 
 //?--------------------------------------------------------------------------------------
 
-  //! Parsing integers with error handling
-  // This will successfully parse the number
-  parseInt(numberStr: '123');
-  // This will cause a FormatException and be handled accordingly
-  parseInt(numberStr: 'abc');
+//! 2. Assert: Testing the function
+  checkAge(25); // Output: Age is 25
+  checkAge(-5); // Throws: AssertionError: Age cannot be negative
+  checkPositiveNumber(10); // Valid number
+  checkPositiveNumber(-3); // Invalid number
+  checkStringLength('Hello'); // Valid string
+  checkStringLength('Hi'); // Invalid string length
+  checkList([1, 2, 3]); // Valid list
+  checkList([]); // Invalid list
+  checkNonNullValue('Hello'); // Valid value
+  checkNonNullValue(null); // Invalid value
+
+//?--------------------------------------------------------------------------------------
+//! 3. Cascade (..)
+// The cascade operator (..) allows you to perform multiple operations on the same object,
+// in a chain of method calls
+
+  // Define a map
+  Map<String, dynamic> person = <String, dynamic>{};
+
+  // Using cascade to set multiple key-value pairs on the same map
+  person
+    ..['name'] = 'Alice'
+    ..['age'] = 30
+    ..['city'] = 'New York';
+
+  print(person); // Output: {name: Alice, age: 30, city: New York}
 
 //?--------------------------------------------------------------------------------------
 
-  //! Demonstrating file operation with finally
-  // This will simulate opening a file, throw an exception, and then ensure cleanup
-  fileOperation();
+//! 4. Spread Operator (...)
+// The spread operator (...) allows you to insert all elements of a collection into another collection.
+//It is useful for combining lists or maps.
 
-//?--------------------------------------------------------------------------------------
+// Define two lists
+  var list1 = [1, 2, 3];
+  var list2 = [4, 5, 6];
 
-  //! Rethrowing exceptions for outer handling
-  try {
-    handleError();
-  } catch (e) {
-    // Handle the rethrown exception
-    print('Caught rethrown exception: $e');
-  }
+  // Using the spread operator to combine lists
+  var combinedList = [...list1, ...list2];
 
-//?--------------------------------------------------------------------------------------
-
-  //! Define some variables, with one possibly being null
-  String? studentName = 'Mahmoud'; // This is not null
-  String? studentGrade = null; // This is null
-
-  // Call the function to print student details
-  printStudentDetails(name: studentName, grade: studentGrade);
+  // Print the combined list
+  print(combinedList); // Output: [1, 2, 3, 4, 5, 6]
 }
 
 //?--------------------------------------------------------------------------------------
 
-//!======================================================================================
-//! Exception Handling Demonstration
-//!======================================================================================
+//! 2. Assert
+// The assert statement is used to test if a condition is true at runtime. If the condition is false,
+// it throws an AssertionError. It’s primarily used for debugging purposes.
+//! Function to check age
+void checkAge(int age) {
+  // Asserts that age must be non-negative
+  assert(age >= 0, 'Age cannot be negative');
+  print('Age is $age');
+}
 
-//! 1. Throwing Exceptions
+//?--------------------------------------------------------------------------------------
+
+//! Function to check if a number is positive using assert
 void checkPositiveNumber(int number) {
-  if (number < 0) {
-    // Throw an exception if the number is negative
-    throw FormatException('Number must be positive.');
-  } else {
-    print('Number is positive.');
-  }
-}
-
-// checkPositiveNumber(-5):
-// Calls the function with a negative number, which will throw an exception.
-// The exception is caught and handled in the main function.
-
-//?--------------------------------------------------------------------------------------
-
-//! 2. Handling Exceptions with try and catch
-void divideNumbers(int a, int b) {
-  try {
-    // Attempt to divide two numbers
-    double result = a / b;
-    print('Result: $result');
-  } catch (e) {
-    // Catch any exception and print an error message
-    print('Error: Division by zero is not allowed.');
-  }
-}
-
-// divideNumbers(10, 0):
-// Demonstrates handling division by zero, where the function
-// catches the error and prints an appropriate message.
-
-//?--------------------------------------------------------------------------------------
-
-//! 3. Catching Specific Exceptions
-void parseInt({required String numberStr}) {
-  try {
-    int number = int.parse(numberStr);
-    print('Parsed number: $number');
-  } on FormatException catch (e) {
-    // Handle specific FormatException
-    print('FormatException: Invalid number format. ${e.message}');
-  } catch (e) {
-    // Handle any other exceptions
-    print('Unexpected error: $e');
-  }
-}
-// parseInt('123') and parseInt('abc'):
-// The first call parses a valid integer, while the second call causes a FormatException
-// due to invalid input, demonstrating specific exception handling.
-
-//?--------------------------------------------------------------------------------------
-
-//! 4. Using finally for Cleanup
-void fileOperation() {
-  try {
-    print('Opening file...');
-    // Code that may throw an exception
-    throw Exception('File not found');
-  } catch (e) {
-    // Catch and print the exception
-    print('Caught an exception: $e');
-  } finally {
-    // This block runs whether an exception occurs or not
-    print('Closing file...');
-  }
-}
-// fileOperation():
-// Simulates a file operation that throws an exception,
-// followed by cleanup in the finally block.
-
-//?--------------------------------------------------------------------------------------
-
-//! 5. Rethrowing Exceptions
-void handleError() {
-  try {
-    throw Exception('Something went wrong');
-  } catch (e) {
-    // Handle and print the exception
-    print('Handling exception: $e');
-    rethrow; // Rethrow the exception to be handled by outer try-catch
-  }
-}
-// handleError():
-// Demonstrates rethrowing an exception after handling it locally.
-// The outer try-catch block in main catches the rethrown exception.
-
-//?--------------------------------------------------------------------------------------
-
-//! 6. Function to print student details using null assertion
-void printStudentDetails({String? name, String? grade}) {
-  try {
-    // Use null assertion to ensure the name and grade are not null
-    // The null assertion operator (!) is used here to tell Dart that the value will not be null
-    String nonNullName = name!;
-    String nonNullGrade = grade!;
-
-    // Print the student's name and grade
-    print('Student Name: $nonNullName');
-    print('Student Grade: $nonNullGrade');
-  } catch (e) {
-    // Catch any exception that occurs due to null value or other issues
-    print('Error: $e');
-  }
+  // Assert that the number must be positive
+  assert(number > 0, 'Number must be positive');
+  print('Number is $number');
 }
 
 //?--------------------------------------------------------------------------------------
 
-//! Summary 
-//* Exceptions in Dart manage errors by allowing you to throw,catch, and handle errors gracefully.
-//* Use `throw` to signal errors, `try-catch` to handle them, `finally` for cleanup, and `rethrow`
-//* to pass exceptions up the stack. This ensures robust error handling and maintains program stability.
+//! Function to check if a string has more than 3 characters
+void checkStringLength(String text) {
+  // Assert that the string length must be more than 3 characters
+  assert(text.length > 3, 'String must have more than 3 characters');
+  print('String is: $text');
+}
+
+//?--------------------------------------------------------------------------------------
+
+//! Function to check if a list is non-empty
+void checkList(List<int> numbers) {
+  // Assert that the list must not be empty
+  assert(numbers.isNotEmpty, 'List must not be empty');
+  print('List contains: ${numbers.length} elements');
+}
+
+//?--------------------------------------------------------------------------------------
+
+//! Function to check if a value is non-null
+void checkNonNullValue(String? value) {
+  // Assert that the value must not be null
+  assert(value != null, 'Value must not be null');
+  print('Value is: $value');
+}
+
+//?--------------------------------------------------------------------------------------
+
