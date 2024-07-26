@@ -1,229 +1,85 @@
-//! Control Flow part 1 in Dart:
-//! if, and switch
+//! Collection Data Types in Dart:
 
 void main() {
-  // variables
-  int number = 7; // The number to check for even or odd
-  String dayOfWeek = 'Tuesday'; // The day of the week to check in Switch case
+  //! List
+  // A List in Dart is an ordered collection of items. Each item can be accessed by its index, starting from 0.
 
-/*
-! if Statement:
+  // Initialize a list with integers
+  List<int> numbers = [1, 2, 3, 4, 5];
 
-Purpose: Executes a block of code based on whether a specified condition is true.
-Structure:
-* if Condition: Checks if the condition is true and executes the corresponding block of code.
-* else if (optional): Checks additional conditions if the previous if condition(s) are false.
-* else (optional): Executes a block of code if none of the if or else if conditions are true.
-Use Case: Ideal for scenarios where you have multiple conditions and want to execute different blocks of code based on which condition is met.
- */
+  // Print specific elements of the list
+  print('First element: ${numbers[0]}'); // Output: 1 (element at index 0)
+  print('Second element: ${numbers[1]}'); // Output: 2 (element at index 1)
+  print('List length: ${numbers.length}'); // Output: 5 (total number of elements in the list)
 
-//?---------------------------------------------------------------------------------------
+  // Adding and Removing Elements
+  numbers.add(6); // Append 6 to the end of the list
+  numbers.insert(1, 10); // Insert 10 at index 1
+  numbers.remove(2); // Remove the first occurrence of 2
+  numbers.removeAt(2); // Remove the element at index 2
 
-  // Check if the number is even or odd.
+  // Print the modified list and its length
+  print('Modified list: $numbers'); // Output: [1, 10, 6, 4, 5]
+  print('List length: ${numbers.length}'); // Output: 5
 
-  if (number < 0) {
-    // If the number is less than zero (negative)
-    print('The number $number is negative.'); // Output for negative numbers
-  } else if (number == 0) {
-    // If the number is exactly zero
-    print('The number $number is zero.'); // Output for zero
-  } else if (number % 2 == 0) {
-    // If the number is positive and divisible by 2 (even)
-    print(
-        'The number $number is positive and even.'); // Output for positive even numbers
-  } else {
-    // If the number is positive and not divisible by 2 (odd)
-    print(
-        'The number $number is positive and odd.'); // Output for positive odd numbers
-  }
+  // Accessing and Modifying Elements
+  numbers[0] = 100; // Change the first element to 100
+  print('Updated first element: ${numbers[0]}'); // Output: 100
+  print('Complete list: $numbers'); // Output: [100, 10, 6, 4, 5]
 
-//?---------------------------------------------------------------------------------------
+  //? ---------------------------------------------------------------------------------------
 
-/*
-! switch Statement:
+  //! Set
+  // A Set in Dart is an unordered collection of unique items. It does not allow duplicate values.
 
-Purpose: Executes different blocks of code based on the value of a variable, with multiple possible execution paths.
-Structure:
-* switch (variable): Evaluates the value of the variable.
-* case value: Defines specific values to compare against the variable. Each case block executes if the variable matches the case value.
-* break; Exits the switch block to prevent falling through to subsequent cases.
-* default: Provides a fallback block of code to execute if none of the case values match.
-Use Case: Ideal for scenarios where you need to handle multiple discrete values of a variable and perform different actions based on those values. */
+  // Initialize a set with unique integers
+  Set<int> uniqueNumbers = {1, 2, 3, 4, 5};
 
-//?---------------------------------------------------------------------------------------
+  // Print elements of the set
+  print('Contains 1: ${uniqueNumbers.contains(1)}'); // Output: true (set contains 1)
+  print('Set length: ${uniqueNumbers.length}'); // Output: 5 (total number of unique elements in the set)
 
-  // Check the day of the week and print a message.
-  switch (dayOfWeek) {
-    // Case for Monday
-    // This block executes if dayOfWeek is 'Monday'.
-    case 'Monday':
-      print('Start of the workweek.'); // Output for Monday
-      break; // Exits the switch block
+  // Adding and Removing Elements
+  uniqueNumbers.add(6); // Add 6 to the set
+  uniqueNumbers.add(2); // Adding duplicate 2 has no effect
+  uniqueNumbers.remove(3); // Remove the value 3
 
-    // Case for Tuesday
-    // This block executes if dayOfWeek is 'Tuesday'.
-    case 'Tuesday':
-      print('Second day of the workweek.'); // Output for Tuesday
-      break; // Exits the switch block
+  // Print the modified set and its length
+  print('Modified set: $uniqueNumbers'); // Output: {1, 2, 4, 5, 6}
+  print('Set length: ${uniqueNumbers.length}'); // Output: 5
 
-    // Case for Wednesday
-    // This block executes if dayOfWeek is 'Wednesday'.
-    case 'Wednesday':
-      print('Midweek day.'); // Output for Wednesday
-      break; // Exits the switch block
+  //? ---------------------------------------------------------------------------------------
 
-    // Case for Thursday
-    // This block executes if dayOfWeek is 'Thursday'.
-    case 'Thursday':
-      print('Almost the weekend.'); // Output for Thursday
-      break; // Exits the switch block
+  //! Map
+  // A Map in Dart is a collection of key-value pairs. Each key is unique, and it maps to a specific value.
 
-    // Case for Friday
-    // This block executes if dayOfWeek is 'Friday'.
-    case 'Friday':
-      print('Last working day of the week.'); // Output for Friday
-      break; // Exits the switch block
+  // Initialize a map with string keys and integer values
+  Map<String, int> ageMap = {'Mahmoud': 30, 'Hafeez': 25, 'Alfy': 35};
 
-    // Case for Saturday and Sunday
-    // This block executes if dayOfWeek is 'Saturday' or 'Sunday'.
-    case 'Saturday':
-    case 'Sunday':
-      print('Weekend!'); // Output for Saturday and Sunday
-      break; // Exits the switch block
+  // Print values associated with specific keys
+  print('Mahmoud\'s age: ${ageMap['Mahmoud']}'); // Output: 30 (value associated with key 'Mahmoud')
+  print('Hafeez\'s age: ${ageMap['Hafeez']}'); // Output: 25 (value associated with key 'Hafeez')
+  print('Map length: ${ageMap.length}'); // Output: 3 (total number of key-value pairs in the map)
 
-    // Default case
-    // This block executes if dayOfWeek does not match any of the above cases.
-    default:
-      print('Invalid day.'); // Output for any invalid day
-      break; // Exits the switch block
-  }
+  // Adding and Removing Key-Value Pairs
+  ageMap['Hussain'] = 40; // Add a new entry for 'Hussain'
+  ageMap['Hafeez'] = 26; // Update Hafeez's age to 26
+  ageMap.remove('Mahmoud'); // Remove the entry for 'Mahmoud'
 
-//?---------------------------------------------------------------------------------------
+  // Print the modified map and its length
+  print('Modified map: $ageMap'); // Output: {Hafeez: 26, Alfy: 35, Hussain: 40}
+  print('Map length: ${ageMap.length}'); // Output: 3
 
-/*
-! Summary
-
-* if Statement:
- Executes code blocks based on whether conditions are true or false.
- It allows for multiple conditions with if, else if, and else branches to handle various scenarios.
-
-* switch Statement:
- Executes different code blocks based on the exact value of a variable.
- It is useful for handling multiple discrete values with specific case labels and a default fallback.
-
- */
-
-//?---------------------------------------------------------------------------------------
-
-//! More Examples:
-// Example 1
-
-  int temperature = 25; // Temperature in Celsius
-
-  if (temperature > 30) {
-    print('It\'s hot outside.');
-  } else if (temperature >= 15) {
-    print('The weather is warm.');
-  } else {
-    print('It\'s cold outside.');
-  }
-
-//?---------------------------------------------------------------------------------------
-// Example 2
-
-  int score = 85; // Student's score
-
-  if (score >= 90) {
-    print('Grade: A');
-  } else if (score >= 80) {
-    print('Grade: B');
-  } else if (score >= 70) {
-    print('Grade: C');
-  } else if (score >= 60) {
-    print('Grade: D');
-  } else {
-    print('Grade: F');
-  }
-
-//?---------------------------------------------------------------------------------------
-// Example 3
-
-  int month = 3; // Numeric month (1 = January, 2 = February, etc.)
-
-  switch (month) {
-    case 1:
-      print('January');
-      break;
-    case 2:
-      print('February');
-      break;
-    case 3:
-      print('March');
-      break;
-    case 4:
-      print('April');
-      break;
-    case 5:
-      print('May');
-      break;
-    case 6:
-      print('June');
-      break;
-    case 7:
-      print('July');
-      break;
-    case 8:
-      print('August');
-      break;
-    case 9:
-      print('September');
-      break;
-    case 10:
-      print('October');
-      break;
-    case 11:
-      print('November');
-      break;
-    case 12:
-      print('December');
-      break;
-    default:
-      print('Invalid month number.');
-      break;
-  }
-
-//?---------------------------------------------------------------------------------------
-// Example 4
-
-  String role = 'admin'; // User role
-
-  switch (role) {
-    case 'admin':
-      print('You have full access.');
-      break;
-    case 'editor':
-      print('You can edit content.');
-      break;
-    case 'viewer':
-      print('You can view content.');
-      break;
-    default:
-      print('Role not recognized.');
-      break;
-  }
-
-//?---------------------------------------------------------------------------------------
-// Example 5
-
-  String status = 'inactive'; // User account status
-
-  if (status == 'active') {
-    print('Account is active.');
-  } else if (status == 'suspended') {
-    print('Account is suspended.');
-  } else if (status == 'deactivated') {
-    print('Account is deactivated.');
-  } else {
-    print('Unknown status.');
-  }
+  // Accessing Values
+  int mahmoudAge = ageMap['Mahmoud'] ??
+      0; // Retrieve Mahmoud's age, default to 0 if not found
+  print(
+      'Mahmoud\'s age: $mahmoudAge'); // Output: 0 (since 'Mahmoud' was removed)
 }
+
+//? ---------------------------------------------------------------------------------------
+
+//! Summary
+// List: Ordered collection of items accessed by index. Supports duplicates.
+// Set: Unordered collection of unique items. Does not support duplicates.
+// Map: Collection of key-value pairs. Each key is unique and maps to a specific value.
