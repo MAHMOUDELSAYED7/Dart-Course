@@ -1,85 +1,210 @@
-//! Collection Data Types in Dart:
+//! Control Flow part 2 in Dart:
+//! for, while, and do while
 
 void main() {
-  //! List
-  // A List in Dart is an ordered collection of items. Each item can be accessed by its index, starting from 0.
+  //! For Loop
+  // The 'for' loop is used to repeat a block of code a specified number of times.
+  // Syntax: for (initialization; condition; increment) { code to execute }
 
-  // Initialize a list with integers
+  // Example: Print numbers from 0 to 4
+  for (int i = 0; i < 5; i++) {
+    // Initialization: int i = 0
+    // Condition: i < 5
+    // Increment: i++
+    // This loop will run as long as i is less than 5.
+    print('For loop iteration: $i');
+  }
+
+//?---------------------------------------------------------------------------------------
+
+  // Example: Print even numbers from 0 to 8
+  for (int i = 0; i <= 8; i += 2) {
+    print('Even number: $i');
+  }
+
+//?---------------------------------------------------------------------------------------
+
+  // Example: Print a countdown from 5 to 1
+  for (int i = 5; i > 0; i--) {
+    print('Countdown: $i');
+  }
+
+//?---------------------------------------------------------------------------------------
+
+  //! For-In Loop
+  // The 'for-in' loop is used to iterate over elements in a collection such as a List, Set, or Map.
+  // Syntax: for (element in collection) { code to execute }
+
+  // Example: Print each element of a list
+  List<String> names = ['Alice', 'Bob', 'Charlie'];
+  for (String name in names) {
+    // Iterate over each element in the 'names' list.
+    print('Name: $name');
+  }
+
+//?---------------------------------------------------------------------------------------
+
+  // Example: Print each character in a string
+  String message = 'Hello';
+  for (var char in message.split('')) {
+    print('Character: $char');
+  }
+
+//?---------------------------------------------------------------------------------------
+
+  //! While Loop
+  // The 'while' loop executes a block of code as long as its condition is true.
+  // Syntax: while (condition) { code to execute }
+
+  // Example: Print numbers from 0 to 4
+  int count = 0;
+  while (count < 5) {
+    // Condition: count < 5
+    // The loop will continue as long as count is less than 5.
+    print('While loop iteration: $count');
+    count++; // Increment the counter to eventually break the loop
+  }
+
+//?---------------------------------------------------------------------------------------
+
+  // Example: Print even numbers from 0 to 8
+  int number = 0;
+  while (number <= 8) {
+    print('Even number: $number');
+    number += 2;
+  }
+
+//?---------------------------------------------------------------------------------------
+
+  // Example: Print a countdown from 5 to 1
+  int num = 5;
+  while (num > 0) {
+    print('Countdown: $num');
+    num--;
+  }
+
+//?---------------------------------------------------------------------------------------
+
+  //! Do-While Loop
+  // The 'do-while' loop executes a block of code once before checking the condition.
+  // It continues to execute the loop as long as the condition is true.
+  // Syntax: do { code to execute } while (condition);
+
+  // Example: Print numbers from 0 to 4
+  int index = 0;
+  do {
+    // The code inside 'do' runs once before the condition is checked.
+    print('Do-while loop iteration: $index');
+    index++; // Increment the counter
+  } while (index < 5); // Condition: index < 5
+
+//?---------------------------------------------------------------------------------------
+
+  // Example: Print even numbers from 0 to 8
+  int evenNum = 0;
+  do {
+    print('Even number: $evenNum');
+    evenNum += 2;
+  } while (evenNum <= 8);
+
+//?---------------------------------------------------------------------------------------
+
+  // Example: Print a countdown from 5 to 1
+  int countdownNum = 5;
+  do {
+    print('Countdown: $countdownNum');
+    countdownNum--;
+  } while (countdownNum > 0);
+
+//?---------------------------------------------------------------------------------------
+
+  //! For-Each Loop
+  // The 'forEach' loop is used to iterate over elements in a collection and perform an action for each element.
+  // Syntax: collection.forEach((element) { code to execute });
+
+  // Example: Print each element of a list
   List<int> numbers = [1, 2, 3, 4, 5];
+  numbers.forEach((number) {
+    // The function inside 'forEach' is executed for each element in the 'numbers' list.
+    print('For-each loop element: $number');
+  });
 
-  // Print specific elements of the list
-  print('First element: ${numbers[0]}'); // Output: 1 (element at index 0)
-  print('Second element: ${numbers[1]}'); // Output: 2 (element at index 1)
-  print('List length: ${numbers.length}'); // Output: 5 (total number of elements in the list)
+//?---------------------------------------------------------------------------------------
 
-  // Adding and Removing Elements
-  numbers.add(6); // Append 6 to the end of the list
-  numbers.insert(1, 10); // Insert 10 at index 1
-  numbers.remove(2); // Remove the first occurrence of 2
-  numbers.removeAt(2); // Remove the element at index 2
+  // Example: Print each character in a string
+  String greeting = 'Hello';
+  greeting.split('').forEach((char) {
+    print('Character: $char');
+  });
 
-  // Print the modified list and its length
-  print('Modified list: $numbers'); // Output: [1, 10, 6, 4, 5]
-  print('List length: ${numbers.length}'); // Output: 5
+//?---------------------------------------------------------------------------------------
+//! More Exmples:
 
-  // Accessing and Modifying Elements
-  numbers[0] = 100; // Change the first element to 100
-  print('Updated first element: ${numbers[0]}'); // Output: 100
-  print('Complete list: $numbers'); // Output: [100, 10, 6, 4, 5]
+//! Example 1
+  // Calculate Fibonacci sequence up to n terms using a while loop
 
-  //? ---------------------------------------------------------------------------------------
+  int n = 10; // Number of terms
+  int a = 0; // First term
+  int b = 1; // Second term
 
-  //! Set
-  // A Set in Dart is an unordered collection of unique items. It does not allow duplicate values.
+  print('Fibonacci sequence up to $n terms:');
+  int value = 0;
+  while (value < n) {
+    // Print the current term
+    print(a);
 
-  // Initialize a set with unique integers
-  Set<int> uniqueNumbers = {1, 2, 3, 4, 5};
+    // Update terms
+    int next = a + b;
+    a = b;
+    b = next;
 
-  // Print elements of the set
-  print('Contains 1: ${uniqueNumbers.contains(1)}'); // Output: true (set contains 1)
-  print('Set length: ${uniqueNumbers.length}'); // Output: 5 (total number of unique elements in the set)
+    count++;
+  }
 
-  // Adding and Removing Elements
-  uniqueNumbers.add(6); // Add 6 to the set
-  uniqueNumbers.add(2); // Adding duplicate 2 has no effect
-  uniqueNumbers.remove(3); // Remove the value 3
+//?---------------------------------------------------------------------------------------
+//! Example 2
+  // Calculate factorial of a number using a for loop
 
-  // Print the modified set and its length
-  print('Modified set: $uniqueNumbers'); // Output: {1, 2, 4, 5, 6}
-  print('Set length: ${uniqueNumbers.length}'); // Output: 5
+  int val = 5; // val to calculate factorial of
+  int factorial = 1; // Initialize factorial result to 1
 
-  //? ---------------------------------------------------------------------------------------
+  for (int i = 1; i <= val; i++) {
+    // Multiply factorial by the current val
+    factorial *= i;
+  }
 
-  //! Map
-  // A Map in Dart is a collection of key-value pairs. Each key is unique, and it maps to a specific value.
+  print('Factorial of $number is $factorial'); // Output: Factorial of 5 is 120
 
-  // Initialize a map with string keys and integer values
-  Map<String, int> ageMap = {'Mahmoud': 30, 'Hafeez': 25, 'Alfy': 35};
+//?---------------------------------------------------------------------------------------
+//! Example 3
+  // Check for prime numbers up to a given limit using a for loop
 
-  // Print values associated with specific keys
-  print('Mahmoud\'s age: ${ageMap['Mahmoud']}'); // Output: 30 (value associated with key 'Mahmoud')
-  print('Hafeez\'s age: ${ageMap['Hafeez']}'); // Output: 25 (value associated with key 'Hafeez')
-  print('Map length: ${ageMap.length}'); // Output: 3 (total number of key-value pairs in the map)
+  int limit = 50; // Limit up to which to find prime numbers
 
-  // Adding and Removing Key-Value Pairs
-  ageMap['Hussain'] = 40; // Add a new entry for 'Hussain'
-  ageMap['Hafeez'] = 26; // Update Hafeez's age to 26
-  ageMap.remove('Mahmoud'); // Remove the entry for 'Mahmoud'
+  print('Prime numbers up to $limit:');
+  for (int num = 2; num <= limit; num++) {
+    bool isPrime = true; // Assume num is a prime number
 
-  // Print the modified map and its length
-  print('Modified map: $ageMap'); // Output: {Hafeez: 26, Alfy: 35, Hussain: 40}
-  print('Map length: ${ageMap.length}'); // Output: 3
+    for (int i = 2; i <= num ~/ 2; i++) {
+      //! The ~/ operator performs integer division, discarding the remainder.
+      // Check if num is divisible by i
+      if (num % i == 0) {
+        isPrime = false;
+        break; // Exit the loop as num is not a prime
+      }
+    }
 
-  // Accessing Values
-  int mahmoudAge = ageMap['Mahmoud'] ??
-      0; // Retrieve Mahmoud's age, default to 0 if not found
-  print(
-      'Mahmoud\'s age: $mahmoudAge'); // Output: 0 (since 'Mahmoud' was removed)
+    if (isPrime) {
+      // Print if the number is prime
+      print(num);
+    }
+  }
 }
 
-//? ---------------------------------------------------------------------------------------
-
+//?---------------------------------------------------------------------------------------
 //! Summary
-// List: Ordered collection of items accessed by index. Supports duplicates.
-// Set: Unordered collection of unique items. Does not support duplicates.
-// Map: Collection of key-value pairs. Each key is unique and maps to a specific value.
+// For Loop: Ideal for scenarios where the number of iterations is known. Provides explicit control over initialization, condition, and increment.
+// For-In Loop: Simplifies iteration over elements in collections, with less boilerplate than traditional loops.
+// While Loop: Executes as long as a specified condition remains true, with the condition checked before each iteration.
+// Do-While Loop: Ensures the code block executes at least once before checking the condition, with the condition checked after each iteration.
+// For-Each Loop: Convenient for iterating over each element in a collection, often used with lists and sets.
