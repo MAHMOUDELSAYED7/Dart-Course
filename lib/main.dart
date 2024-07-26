@@ -1,261 +1,181 @@
 //!======================================================================================
-//! Null Safety in Dart
+//! Functions in Dart
 //!======================================================================================
 
-// TODO : [https://dart.dev/resources/dart-cheatsheet#nullable-variables]
+/*
+! What is a Function?
+ A function is a reusable block of code designed to perform a specific task. It can take inputs, process them,
+ and return a result. Functions in Dart help organize code by encapsulating behavior into modular units.
 
-void main() {
-  // Null safety ensures that variables cannot be assigned a null value unless explicitly declared.
-  // This helps in avoiding null pointer exceptions and makes the code more robust.
+! Why Use Functions?
+ Code Reusability: Write code once and use it multiple times, reducing redundancy.
+ Modularity: Break complex tasks into smaller, manageable pieces, making code easier to understand and maintain.
+ Abstraction: Simplify complex logic into high-level operations, hiding implementation details from users.
+ Readability: Descriptive function names make code more understandable and easier to debug.
+ Maintainability: Update or fix code in one place without affecting other parts.
 
-  //--------------------------------------------------------------------------------------
-  //! Non-Nullable Variables
-  //--------------------------------------------------------------------------------------
-
-  // Non-nullable variables must be initialized with a value.
-  int nonNullableInt = 10;
-  String nonNullableString = "Hello";
-
-  // Print values of non-nullable variables.
-  print(nonNullableInt); // Output: 10
-  print(nonNullableString); // Output: Hello
-
-  //?--------------------------------------------------------------------------------------
-
-  //! Nullable Variables
-
-  // Nullable variables can be null and must be explicitly marked with a '?'.
-  int? nullableInt = null;
-  String? nullableString = null;
-
-  // Print values of nullable variables.
-  print(nullableInt); // Output: null
-  print(nullableString); // Output: null
-
-  // Assigning non-null values to nullable variables.
-  nullableInt = 20;
-  nullableString = "World";
-
-  // Print updated values of nullable variables.
-  print(nullableInt); // Output: 20
-  print(nullableString); // Output: World
-
-//?--------------------------------------------------------------------------------------
-
-  //! The 'late' Keyword
-
-  // 'late' is used for non-nullable variables that are initialized later.
-  late int nonNullableLateInt;
-
-  // Initializing the variable before use.
-  nonNullableLateInt = 30;
-
-  // Print value of the late-initialized variable.
-  print(nonNullableLateInt); // Output: 30
-
-//?--------------------------------------------------------------------------------------
-
-  //! Null-Aware Operators (?.)
-
-  // Null-aware access operator (?.): Access a property or method only if the object is not null.
-  String? nullableString2 = null;
-  print(nullableString2?.length); // Output: null
-
-  nullableString2 = "Hello";
-  print(nullableString2.length); // Output: 5
-
-  //?--------------------------------------------------------------------------------------
-
-  //!  Null-coalescing operator (??)
-
-  // Null-coalescing operator (??): Provide a default value if the object is null.
-  String? nullableString3 = null;
-  print(nullableString3 ?? "Default Value"); // Output: Default Value
-
-  nullableString3 = "World";
-  print(nullableString3 ?? "Default Value"); // Output: World
-
-  //?--------------------------------------------------------------------------------------
-
-  //! Null-coalescing assignment operator (??=)
-
-  // Null-coalescing assignment operator (??=): Assign a value only if the variable is null.
-  String? nullableString4;
-  nullableString4 ??= "Initial Value";
-  print(nullableString4); // Output: Initial Value
-
-  nullableString4 ??= "New Value";
-  print(nullableString4); // Output: Initial Value (unchanged)
-
-  //?--------------------------------------------------------------------------------------
-
-  //! Examples with Null Safety
-
-  //! Example: Safe String Length Calculation
-
-  String? potentiallyNullString = null;
-
-  // Safe length calculation using null-aware operator.
-  int length = potentiallyNullString?.length ?? 0;
-
-  // Print length.
-  print(length); // Output: 0
-
-  // Assign a non-null value.
-  potentiallyNullString = "Dart";
-
-  // Safe length calculation again.
-  length = potentiallyNullString?.length ?? 0;
-
-  // Print length.
-  print(length); // Output: 4
-
-  //?--------------------------------------------------------------------------------------
-
-  //! Example: Null Safety with Boolean Values
-
-  // Nullable boolean variable
-  bool? isStudent;
-
-  // Assign a value to the boolean variable
-  isStudent = null; // This could also be true or false
-
-  // Check if the value is null before using it
-  if (isStudent == null) {
-    print('The status of being a student is unknown.');
-  } else if (isStudent) {
-    print('The person is a student.');
-  } else {
-    print('The person is not a student.');
-  }
-
-  // Using the null-aware operator '??' to provide a default value
-  bool studentStatus = isStudent ?? false;
-  print('Student status: $studentStatus'); // Output: Student status: false
-
-  //?--------------------------------------------------------------------------------------
-
-  // Nullable boolean variable
-  bool? isMarried;
-
-  // Assign a value to the boolean variable
-  isMarried = null; // This could also be true or false
-
-  // Use the null-aware operator '??' to provide a default value
-  bool maritalStatus = isMarried ?? false;
-  print('Marital status: $maritalStatus'); // Output: Marital status: false
-
-  //?--------------------------------------------------------------------------------------
-
-  //! Example: Working with Nullable Lists
-
-  // Nullable list of integers.
-  List<int>? nullableList = null;
-
-  // Safely access and print the length of the list.
-  print(nullableList?.length ?? 0); // Output: 0
-
-  // Assign a non-null value to the list.
-  nullableList = [1, 2, 3, 4, 5];
-
-  // Safely access and print the length of the list.
-  print(nullableList?.length ?? 0); // Output: 5
-
-  //?--------------------------------------------------------------------------------------
-
-  //! Example: Handling Null Values in Collections
-
-  //! .map() Explanation:
-  // Initialize a Map with nullable integer values.
-  Map<String, int?> studentGrades = {
-    'Mahmoud': 85,
-    'Hafeez': null,
-    'Hussain': 90
-  };
-
-  // Use the map() method to iterate over each entry in the Map.
-  studentGrades.entries
-      // The map() method applies the provided function to each entry.
-      .map((entry) =>
-          // Inside the map() method, we define a function that takes each entry
-          // and prints the key and value. If the value is null, it prints "No grade" instead.
-          print('${entry.key}: ${entry.value ?? "No grade"}'))
-      // The toList() method is called to complete the iteration and ensure the side effect (printing) occurs.
-      .toList();
-
-  /*
- * Explanation:
- * 1. studentGrades.entries:
- *    - Returns an iterable of MapEntry objects. Each MapEntry contains a key and a value.
- *
- * 2. .map((entry) => ...):
- *    - The map() method takes a function as an argument. This function is applied to each element
- *      in the iterable (in this case, each MapEntry).
- *    - For each entry, the provided function is executed. In this example, the function is
- *      (entry) => print('${entry.key}: ${entry.value ?? "No grade"}').
- *    - This function takes an entry, and prints its key and value. If the value is null,
- *      it prints "No grade" instead.
- *
- * 3. .toList():
- *    - The toList() method converts the iterable returned by map() into a List.
- *    - This ensures the map() method is fully executed, and all print statements are called.
- *    - Note that toList() is necessary here to trigger the map() method's side effect (printing).
+! Problems Functions Solve
+ Duplication: Avoid writing the same code in multiple places.
+ Complexity: Manage large codebases by breaking tasks into smaller functions.
+ Scalability: Organize code logically as applications grow.
+ Error Handling: Isolate and handle errors more effectively.
  */
 
-  //?--------------------------------------------------------------------------------------
-
-  // Map with nullable values.
-  Map<String, int?> grades = {
-    "Math": 85,
-    "Science": null,
-    "English": 90,
-  };
-
-  // Print each subject's grade using map.
-  grades.entries
-      .map((entry) => print('${entry.key}: ${entry.value ?? "No grade"}'))
-      .toList();
-  // Output:
-  // Math: 85
-  // Science: No grade
-  // English: 90
+void main() {
+  //! Basic Function Example
+  greet('Mahmoud'); // Output: Hello, Mahmoud!
 
   //?--------------------------------------------------------------------------------------
 
-  //! Example: Chained Null-Aware Calls
-
-  // Initialize variables with nested fields
-  String? addressStreet = null;
-  String? addressCity = null;
-
-  // Safely access nested fields using chained null-aware calls.
-  print(addressStreet ?? "No address"); // Output: No address
-
-  // Assign a non-null value to nested fields.
-  addressStreet = "Main St";
-  addressCity = "Springfield";
-
-  // Safely access nested fields using chained null-aware calls.
-  print(addressStreet ?? "No address"); // Output: Main St
+  //!  Function with Return Value Example
+  int sumResult = add(5, 7);
+  print(sumResult); // Output: 12
 
   //?--------------------------------------------------------------------------------------
 
-  //! Example: Combining Null Safety with Generics
+  //! Function with Optional Positional Parameters Example
+  greetWithOptionalTitle('Mahmoud'); // Output: Hello, Mahmoud!
+  greetWithOptionalTitle('Mahmoud', 'Mr.'); // Output: Hello, Mr. Mahmoud!
 
-  // List of nullable integers.
-  List<int?> numbers = [null, null, 3, null, 5];
-  int? firstNonNullNumber;
+  //! Function with Named Optional Parameters Example
+  greetWithNamedParameters(name: 'Carol'); // Output: Hello, Carol!
+  greetWithNamedParameters(
+      name: 'Carol', title: 'Ms.'); // Output: Hello, Ms. Carol!
 
-  // Find the first non-null element.
-  for (int? item in numbers) {
-    if (item != null) {
-      firstNonNullNumber = item;
-      break;
-    }
+  //?--------------------------------------------------------------------------------------
+
+  //! Arrow Function Example
+  print(square(4)); // Output: 16
+
+  //?--------------------------------------------------------------------------------------
+
+  //! Higher-Order Function Example
+  var quadruple = createMultiplier(4);
+  print(quadruple(5)); // Output: 20
+
+  //?--------------------------------------------------------------------------------------
+
+  //! Linear Search Function Example
+  List<int> numbers = [5, 3, 7, 2, 8, 1];
+  int target = 8;
+  int index = linearSearch(numbers, target);
+
+  if (index != -1) {
+    print('Target $target found at index $index.');
+  } else {
+    print('Target $target not found in the list.');
   }
 
-  // Print the first non-null number.
-  print(firstNonNullNumber); // Output: 3
+//?--------------------------------------------------------------------------------------
 
-  //?--------------------------------------------------------------------------------------
+  //! Example usage of determineGrade function
+  int score1 = 95;
+  int score2 = 85;
+  int score3 = 110; // Invalid score
+  int score4 = 55;
+
+  print('Score: $score1 - Grade: ${determineGrade(score1)}'); // Output: A
+  print('Score: $score2 - Grade: ${determineGrade(score2)}'); // Output: B
+  print(
+      'Score: $score3 - Grade: ${determineGrade(score3)}'); // Output: Invalid score
+  print('Score: $score4 - Grade: ${determineGrade(score4)}'); // Output: F
 }
+
+//?--------------------------------------------------------------------------------------
+
+//!======================================================================================
+//! Create a Function
+//!======================================================================================
+
+//! Define a basic function that takes a name and prints a greeting.
+void greet(String name) {
+  print('Hello, $name!');
+}
+
+//?--------------------------------------------------------------------------------------
+
+//! Define a function that adds two integers and returns the result.
+int add(int a, int b) {
+  return a + b;
+}
+
+//?--------------------------------------------------------------------------------------
+
+//! Define a function with an optional positional parameter.
+void greetWithOptionalTitle(String name, [String? title]) {
+  if (title != null) {
+    print('Hello, $title $name!');
+  } else {
+    print('Hello, $name!');
+  }
+}
+
+//?--------------------------------------------------------------------------------------
+
+//! Define a function with named optional parameters.
+void greetWithNamedParameters({required String name, String? title}) {
+  if (title != null) {
+    print('Hello, $title $name!');
+  } else {
+    print('Hello, $name!');
+  }
+}
+
+//?--------------------------------------------------------------------------------------
+
+//! Define an arrow function that squares a number.
+int square(int x) => x * x;
+
+//?--------------------------------------------------------------------------------------
+
+//! Define a higher-order function that returns a function.
+Function createMultiplier(int factor) {
+  return (int x) => x * factor;
+}
+
+//?--------------------------------------------------------------------------------------
+
+//! More Examples:
+
+//! Linear Search Function
+int linearSearch(List<int> list, int target) {
+  for (int i = 0; i < list.length; i++) {
+    if (list[i] == target) {
+      return i; // Target found, return its index
+    }
+  }
+  return -1; // Target not found, return -1
+}
+
+//?--------------------------------------------------------------------------------------
+
+//! Function to determine the letter grade based on numeric score
+String determineGrade(int score) {
+  // Check if the score is within valid range (0-100)
+  if (score < 0 || score > 100) {
+    return 'Invalid score'; // Return error message for invalid scores
+  }
+
+  // Determine letter grade based on score range
+  if (score >= 90) {
+    return 'A'; // Excellent grade for scores 90 and above
+  } else if (score >= 80) {
+    return 'B'; // Good grade for scores between 80 and 89
+  } else if (score >= 70) {
+    return 'C'; // Average grade for scores between 70 and 79
+  } else if (score >= 60) {
+    return 'D'; // Below average grade for scores between 60 and 69
+  } else {
+    return 'F'; // Failing grade for scores below 60
+  }
+}
+
+//?--------------------------------------------------------------------------------------
+
+/*
+! Summary
+* Functions in Dart are a fundamental building block that improve code reusability,
+* modularity, abstraction, readability, and maintainability.
+* They address issues related to code duplication, complexity, scalability,
+* and error handling, making code more organized and efficient.
+ */
