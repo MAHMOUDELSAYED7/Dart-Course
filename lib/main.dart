@@ -1,93 +1,108 @@
 //!======================================================================================
-//!   Understanding Instance and Constructor in Dart
+//!   Understanding Inheritance in Dart
 //!======================================================================================
 
+/*
+ ! Inheritance allows a class to inherit properties and methods from another class.
+  The class that inherits is called the subclass (or child class), and 
+  the class being inherited from is called the superclass (or parent class).
+*/
+
+//?--------------------------------------------------------------------------------------------------------------------
+
 void main() {
-  //! Creating instances of Person, Product, and Book classes
-  Person person1 = Person('Mahmoud', 25);
-  Product product1 = Product('Laptop', 999.99, 10);
-  Book book1 = Book('1984', 'George Orwell', 9.99);
+  //! Creating an instance of Dog
+  Dog dog = Dog('Buddy', 3, 'Golden Retriever');
+  dog.display(); // Output: Name: Buddy, Age: 3
+  dog.makeSound(); // Output: Buddy barks.
+  dog.displayBreed(); // Output: Buddy is a Golden Retriever.
 
-  // Accessing properties and calling methods for Person
-  print(person1.name); // Output: Mahmoud
-  print(person1.age); // Output: 25
-  person1.display(); // Output: Name: Mahmoud, Age: 25
+//?--------------------------------------------------------------------------------------------------------------------
 
-  //?--------------------------------------------------------------------------------------------------------------------
-
-  //! Accessing properties and calling methods for Product
-  print(product1.productName); // Output: Laptop
-  print(product1.price); // Output: 999.99
-  print(product1.quantity); // Output: 10
-  product1.display(); // Output: Product: Laptop, Price: $999.99, Quantity: 10
-
-  //?--------------------------------------------------------------------------------------------------------------------
-
-  //! Accessing properties and calling methods for Book
-  print(book1.title); // Output: 1984
-  print(book1.author); // Output: George Orwell
-  print(book1.price); // Output: 9.99
-  book1.display(); // Output: Title: 1984, Author: George Orwell, Price: $9.99
+  //! Creating an instance of Cat
+  Cat cat = Cat('Whiskers', 2, 'black');
+  cat.display(); // Output: Name: Whiskers, Age: 2
+  cat.makeSound(); // Output: Whiskers meows.
+  cat.displayColor(); // Output: Whiskers is black in color.
 }
 
 //?--------------------------------------------------------------------------------------------------------------------
 
-//! Example 1: Person Class with Constructor
-class Person {
+//! Superclass (Base Class or Parent Class)
+class Animal {
   // Properties
   String name;
   int age;
 
   // Constructor to initialize properties
-  Person(this.name, this.age);
+  Animal(this.name, this.age);
 
-  // Method to display person details
+  // Method to display animal details
   void display() {
     print('Name: $name, Age: $age');
   }
-}
 
-//! Example 2: Product Class with Constructor
-class Product {
-  // Properties
-  String productName;
-  double price;
-  int quantity;
-
-  // Constructor to initialize properties
-  Product(this.productName, this.price, this.quantity);
-
-  // Method to display product details
-  void display() {
-    print(
-        'Product: $productName, Price: \$${price.toStringAsFixed(2)}, Quantity: $quantity');
+  // Method to make a sound
+  void makeSound() {
+    print('$name makes a sound.');
   }
 }
 
-//! Example 3: Book Class with Constructor
-class Book {
-  // Properties
-  String title;
-  String author;
-  double price;
+//?--------------------------------------------------------------------------------------------------------------------
 
-  // Constructor to initialize properties
-  Book(this.title, this.author, this.price);
+//! Subclass (Derived Class or Child Class) extending Animal
+class Dog extends Animal {
+  // Additional property specific to Dog
+  String breed;
 
-  // Method to display book details
-  void display() {
-    print(
-        'Title: $title, Author: $author, Price: \$${price.toStringAsFixed(2)}');
+  // Constructor to initialize properties of both Dog and Animal
+  Dog(String name, int age, this.breed) : super(name, age);
+
+  // Overriding the makeSound method
+  @override
+  void makeSound() {
+    print('$name barks.');
+  }
+
+  // Additional method specific to Dog
+  void displayBreed() {
+    print('$name is a $breed.');
   }
 }
 
+//?--------------------------------------------------------------------------------------------------------------------
+
+//! Another Subclass (Derived Class or Child Class) extending Animal
+class Cat extends Animal {
+  // Additional property specific to Cat
+  String color;
+
+  // Constructor to initialize properties of both Cat and Animal
+  Cat(String name, int age, this.color) : super(name, age);
+
+  // Overriding the makeSound method
+  @override
+  void makeSound() {
+    print('$name meows.');
+  }
+
+  // Additional method specific to Cat
+  void displayColor() {
+    print('$name is $color in color.');
+  }
+}
+
+//?--------------------------------------------------------------------------------------------------------------------
 
 /*
 ! Summary:
-- Instance: A specific object created from a class. It has its own set of properties and methods as defined by the class.
-- Constructor: A special method in a class used to initialize the properties of an instance. It has the same name
-  as the class and is called automatically when an instance is created.
+- Inheritance: A mechanism where one class (child or derived class) inherits propertiesand methods from another class (parent or base class).
+- Extending a class: Use the `extends` keyword to create a subclass.
+- Overriding: Redefining a method in the derived class that exists in the base class, using the `@override` annotation.
+- super constructor: Calls the constructor of the base class from the derived class constructor,
+  ensuring proper initialization of inherited properties.
 
- By using constructors, you can ensure that your objects are always initialized properly,
- and by creating instances,you can use the functionality defined within your classes.
+  Inheritance promotes code reusability, allowing you to build on existing code and extend functionality without rewriting it.
+  By using inheritance, we can create a hierarchical relationship between classes, promote code reusability,
+  and allow for the extension and customization of existing functionality.
 */
