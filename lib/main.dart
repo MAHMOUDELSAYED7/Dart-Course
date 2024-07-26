@@ -1,181 +1,174 @@
 //!======================================================================================
-//! Functions in Dart
+//!  Exception Handling  in Dart
 //!======================================================================================
-
-/*
-! What is a Function?
- A function is a reusable block of code designed to perform a specific task. It can take inputs, process them,
- and return a result. Functions in Dart help organize code by encapsulating behavior into modular units.
-
-! Why Use Functions?
- Code Reusability: Write code once and use it multiple times, reducing redundancy.
- Modularity: Break complex tasks into smaller, manageable pieces, making code easier to understand and maintain.
- Abstraction: Simplify complex logic into high-level operations, hiding implementation details from users.
- Readability: Descriptive function names make code more understandable and easier to debug.
- Maintainability: Update or fix code in one place without affecting other parts.
-
-! Problems Functions Solve
- Duplication: Avoid writing the same code in multiple places.
- Complexity: Manage large codebases by breaking tasks into smaller functions.
- Scalability: Organize code logically as applications grow.
- Error Handling: Isolate and handle errors more effectively.
- */
 
 void main() {
-  //! Basic Function Example
-  greet('Mahmoud'); // Output: Hello, Mahmoud!
+  //! Demonstrating throwing and handling exceptions
 
-  //?--------------------------------------------------------------------------------------
-
-  //!  Function with Return Value Example
-  int sumResult = add(5, 7);
-  print(sumResult); // Output: 12
-
-  //?--------------------------------------------------------------------------------------
-
-  //! Function with Optional Positional Parameters Example
-  greetWithOptionalTitle('Mahmoud'); // Output: Hello, Mahmoud!
-  greetWithOptionalTitle('Mahmoud', 'Mr.'); // Output: Hello, Mr. Mahmoud!
-
-  //! Function with Named Optional Parameters Example
-  greetWithNamedParameters(name: 'Carol'); // Output: Hello, Carol!
-  greetWithNamedParameters(
-      name: 'Carol', title: 'Ms.'); // Output: Hello, Ms. Carol!
-
-  //?--------------------------------------------------------------------------------------
-
-  //! Arrow Function Example
-  print(square(4)); // Output: 16
-
-  //?--------------------------------------------------------------------------------------
-
-  //! Higher-Order Function Example
-  var quadruple = createMultiplier(4);
-  print(quadruple(5)); // Output: 20
-
-  //?--------------------------------------------------------------------------------------
-
-  //! Linear Search Function Example
-  List<int> numbers = [5, 3, 7, 2, 8, 1];
-  int target = 8;
-  int index = linearSearch(numbers, target);
-
-  if (index != -1) {
-    print('Target $target found at index $index.');
-  } else {
-    print('Target $target not found in the list.');
+  //! check Positive Number Handling
+  try {
+    // This will throw an exception as the number is negative
+    checkPositiveNumber(-5);
+  } catch (e) {
+    // Handle the exception thrown by checkPositiveNumber
+    print('Caught an exception: $e');
   }
 
 //?--------------------------------------------------------------------------------------
 
-  //! Example usage of determineGrade function
-  int score1 = 95;
-  int score2 = 85;
-  int score3 = 110; // Invalid score
-  int score4 = 55;
+  //! Handling division by zero
+  // This will catch the division by zero error and print a message
+  divideNumbers(10, 0);
 
-  print('Score: $score1 - Grade: ${determineGrade(score1)}'); // Output: A
-  print('Score: $score2 - Grade: ${determineGrade(score2)}'); // Output: B
-  print(
-      'Score: $score3 - Grade: ${determineGrade(score3)}'); // Output: Invalid score
-  print('Score: $score4 - Grade: ${determineGrade(score4)}'); // Output: F
+//?--------------------------------------------------------------------------------------
+
+  //! Parsing integers with error handling
+  // This will successfully parse the number
+  parseInt(numberStr: '123');
+  // This will cause a FormatException and be handled accordingly
+  parseInt(numberStr: 'abc');
+
+//?--------------------------------------------------------------------------------------
+
+  //! Demonstrating file operation with finally
+  // This will simulate opening a file, throw an exception, and then ensure cleanup
+  fileOperation();
+
+//?--------------------------------------------------------------------------------------
+
+  //! Rethrowing exceptions for outer handling
+  try {
+    handleError();
+  } catch (e) {
+    // Handle the rethrown exception
+    print('Caught rethrown exception: $e');
+  }
+
+//?--------------------------------------------------------------------------------------
+
+  //! Define some variables, with one possibly being null
+  String? studentName = 'Mahmoud'; // This is not null
+  String? studentGrade = null; // This is null
+
+  // Call the function to print student details
+  printStudentDetails(name: studentName, grade: studentGrade);
 }
 
 //?--------------------------------------------------------------------------------------
 
 //!======================================================================================
-//! Create a Function
+//! Exception Handling Demonstration
 //!======================================================================================
 
-//! Define a basic function that takes a name and prints a greeting.
-void greet(String name) {
-  print('Hello, $name!');
-}
-
-//?--------------------------------------------------------------------------------------
-
-//! Define a function that adds two integers and returns the result.
-int add(int a, int b) {
-  return a + b;
-}
-
-//?--------------------------------------------------------------------------------------
-
-//! Define a function with an optional positional parameter.
-void greetWithOptionalTitle(String name, [String? title]) {
-  if (title != null) {
-    print('Hello, $title $name!');
+//! 1. Throwing Exceptions
+void checkPositiveNumber(int number) {
+  if (number < 0) {
+    // Throw an exception if the number is negative
+    throw FormatException('Number must be positive.');
   } else {
-    print('Hello, $name!');
+    print('Number is positive.');
+  }
+}
+
+// checkPositiveNumber(-5):
+// Calls the function with a negative number, which will throw an exception.
+// The exception is caught and handled in the main function.
+
+//?--------------------------------------------------------------------------------------
+
+//! 2. Handling Exceptions with try and catch
+void divideNumbers(int a, int b) {
+  try {
+    // Attempt to divide two numbers
+    double result = a / b;
+    print('Result: $result');
+  } catch (e) {
+    // Catch any exception and print an error message
+    print('Error: Division by zero is not allowed.');
+  }
+}
+
+// divideNumbers(10, 0):
+// Demonstrates handling division by zero, where the function
+// catches the error and prints an appropriate message.
+
+//?--------------------------------------------------------------------------------------
+
+//! 3. Catching Specific Exceptions
+void parseInt({required String numberStr}) {
+  try {
+    int number = int.parse(numberStr);
+    print('Parsed number: $number');
+  } on FormatException catch (e) {
+    // Handle specific FormatException
+    print('FormatException: Invalid number format. ${e.message}');
+  } catch (e) {
+    // Handle any other exceptions
+    print('Unexpected error: $e');
+  }
+}
+// parseInt('123') and parseInt('abc'):
+// The first call parses a valid integer, while the second call causes a FormatException
+// due to invalid input, demonstrating specific exception handling.
+
+//?--------------------------------------------------------------------------------------
+
+//! 4. Using finally for Cleanup
+void fileOperation() {
+  try {
+    print('Opening file...');
+    // Code that may throw an exception
+    throw Exception('File not found');
+  } catch (e) {
+    // Catch and print the exception
+    print('Caught an exception: $e');
+  } finally {
+    // This block runs whether an exception occurs or not
+    print('Closing file...');
+  }
+}
+// fileOperation():
+// Simulates a file operation that throws an exception,
+// followed by cleanup in the finally block.
+
+//?--------------------------------------------------------------------------------------
+
+//! 5. Rethrowing Exceptions
+void handleError() {
+  try {
+    throw Exception('Something went wrong');
+  } catch (e) {
+    // Handle and print the exception
+    print('Handling exception: $e');
+    rethrow; // Rethrow the exception to be handled by outer try-catch
+  }
+}
+// handleError():
+// Demonstrates rethrowing an exception after handling it locally.
+// The outer try-catch block in main catches the rethrown exception.
+
+//?--------------------------------------------------------------------------------------
+
+//! 6. Function to print student details using null assertion
+void printStudentDetails({String? name, String? grade}) {
+  try {
+    // Use null assertion to ensure the name and grade are not null
+    // The null assertion operator (!) is used here to tell Dart that the value will not be null
+    String nonNullName = name!;
+    String nonNullGrade = grade!;
+
+    // Print the student's name and grade
+    print('Student Name: $nonNullName');
+    print('Student Grade: $nonNullGrade');
+  } catch (e) {
+    // Catch any exception that occurs due to null value or other issues
+    print('Error: $e');
   }
 }
 
 //?--------------------------------------------------------------------------------------
 
-//! Define a function with named optional parameters.
-void greetWithNamedParameters({required String name, String? title}) {
-  if (title != null) {
-    print('Hello, $title $name!');
-  } else {
-    print('Hello, $name!');
-  }
-}
-
-//?--------------------------------------------------------------------------------------
-
-//! Define an arrow function that squares a number.
-int square(int x) => x * x;
-
-//?--------------------------------------------------------------------------------------
-
-//! Define a higher-order function that returns a function.
-Function createMultiplier(int factor) {
-  return (int x) => x * factor;
-}
-
-//?--------------------------------------------------------------------------------------
-
-//! More Examples:
-
-//! Linear Search Function
-int linearSearch(List<int> list, int target) {
-  for (int i = 0; i < list.length; i++) {
-    if (list[i] == target) {
-      return i; // Target found, return its index
-    }
-  }
-  return -1; // Target not found, return -1
-}
-
-//?--------------------------------------------------------------------------------------
-
-//! Function to determine the letter grade based on numeric score
-String determineGrade(int score) {
-  // Check if the score is within valid range (0-100)
-  if (score < 0 || score > 100) {
-    return 'Invalid score'; // Return error message for invalid scores
-  }
-
-  // Determine letter grade based on score range
-  if (score >= 90) {
-    return 'A'; // Excellent grade for scores 90 and above
-  } else if (score >= 80) {
-    return 'B'; // Good grade for scores between 80 and 89
-  } else if (score >= 70) {
-    return 'C'; // Average grade for scores between 70 and 79
-  } else if (score >= 60) {
-    return 'D'; // Below average grade for scores between 60 and 69
-  } else {
-    return 'F'; // Failing grade for scores below 60
-  }
-}
-
-//?--------------------------------------------------------------------------------------
-
-/*
-! Summary
-* Functions in Dart are a fundamental building block that improve code reusability,
-* modularity, abstraction, readability, and maintainability.
-* They address issues related to code duplication, complexity, scalability,
-* and error handling, making code more organized and efficient.
- */
+//! Summary 
+//* Exceptions in Dart manage errors by allowing you to throw,catch, and handle errors gracefully.
+//* Use `throw` to signal errors, `try-catch` to handle them, `finally` for cleanup, and `rethrow`
+//* to pass exceptions up the stack. This ensures robust error handling and maintains program stability.
