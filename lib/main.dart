@@ -1,93 +1,194 @@
 //!======================================================================================
-//!   Understanding More about Encapsulation (Getters & Setters)
+//!   Understanding abstract and polymorphism
 //!======================================================================================
 
 /*
- * Getters and setters in Dart are special methods used to access and modify
- * the values of private fields in a class. A getter allows you to retrieve the
- * value of a private field, while a setter allows you to update it. These methods
- * provide a way to control how fields are accessed and modified, ensuring 
- * encapsulation and adding logic if needed.
+! Abstraction:
+* simplifies complex systems by hiding implementation details and exposing only essential features.
+* It is achieved through abstract classes and methods, which define a common interface without specifying
+* how the functionality is implemented. This approach promotes simplicity, code reusability, and encapsulation.
+
+! Polymorphism: allows objects of different classes to be treated as objects of a common superclass,
+* enabling a single interface to interact with different data types. It can be achieved through method overriding,
+* where a subclass provides a specific implementation of a method defined in its superclass. This allows for flexible
+* and reusable code, as the same method can behave differently based on the object's actual class.
+* Polymorphism enhances flexibility and maintainability by reducing the need for conditional logic and complex structures.
  */
-//?--------------------------------------------------------------------------------------------------------------------
+//?---------------------------------------------------------------------------------------------------
 
 void main() {
-  //! Creating an instance of Rectangle
-  Rectangle rect = Rectangle(5.0, 10.0);
+  //! Demonstrating polymorphism with shapes
+  Shape football = Circle();
+  football.draw(); // Outputs Drawing a circle.
+  football.describe(); // Outputs "I am a shape."
 
-  // Accessing properties using getters
-  print('Width: ${rect.width}'); // Output: Width: 5.0
-  print('Height: ${rect.height}'); // Output: Height: 10.0
-  print('Area: ${rect.area}'); // Output: Area: 50.0
+//?---------------------------------------------------------------------------------------------------
 
-  //! Modifying properties using setters
-  rect.width = 7.0;
-  rect.height = 12.0;
+  Shape window = Square(); // Outputs Drawing a square.
+  window.draw();
+  window.describe(); // Outputs "I am a shape."
 
-  // Accessing modified properties using getters
-  print('New Width: ${rect.width}'); // Output: New Width: 7.0
-  print('New Height: ${rect.height}'); // Output: New Height: 12.0
-  print('New Area: ${rect.area}'); // Output: New Area: 84.0
+//?---------------------------------------------------------------------------------------------------
 
-  //! Attempting to set invalid values
-  rect.width = -5.0; // Output: Width must be positive.
-  rect.height = -10.0; // Output: Height must be positive.
-}
+  List<Shape> shapes = [Circle(), Square(), Triangle(), Rectangle()];
 
-//?--------------------------------------------------------------------------------------------------------------------
-
-//! Class representing a Rectangle
-class Rectangle {
-  double _width; // Private variable to store width
-  double _height; // Private variable to store height
-
-  // Constructor to initialize width and height
-  Rectangle(this._width, this._height);
-
-//?--------------------------------------------------------------------------------------------------------------------
-
-  //! Getter for width
-  // A getter is a method that retrieves the value of a private variable.
-  // It allows controlled access to the variable's value from outside the class.
-  double get width => _width;
-
-//?--------------------------------------------------------------------------------------------------------------------
-
-  //! Setter for width
-  // A setter is a method that allows you to set the value of a private variable.
-  // It includes validation logic to ensure the value being assigned is valid.
-  set width(double value) {
-    if (value > 0) {
-      _width = value;
-    } else {
-      print('Width must be positive.');
-    }
+  for (var shape in shapes) {
+    shape.draw(); // Outputs specific shape drawing messages
+    shape.describe(); // Outputs "I am a shape."
   }
 
-//?--------------------------------------------------------------------------------------------------------------------
+//?---------------------------------------------------------------------------------------------------
+  //! Demonstrating polymorphism with vehicles
 
-  //! Getter for height
-  double get height => _height;
+  Vehicle truck = Truck();
+  truck.start(); // Outputs Truck started.
+  truck.stop(); // Outputs Truck stopped.
 
-//?--------------------------------------------------------------------------------------------------------------------
+//?---------------------------------------------------------------------------------------------------
 
-  //! Setter for height
-  set height(double value) {
-    if (value > 0) {
-      _height = value;
-    } else {
-      print('Height must be positive.');
-    }
+  Vehicle motorcycle = Motorcycle();
+  motorcycle.start(); // Outputs Motorcycle started.
+  motorcycle.stop(); // Outputs Motorcycle stopped.
+
+//?---------------------------------------------------------------------------------------------------
+
+  List<Vehicle> vehicles = [Car(), Truck(), Motorcycle()];
+
+  for (var vehicle in vehicles) {
+    vehicle.start(); // Outputs vehicle-specific start messages
+    vehicle.stop(); // Outputs vehicle-specific stop messages
   }
-
-//?--------------------------------------------------------------------------------------------------------------------
-
-  //! Getter for area (read-only property)
-  // This getter calculates and returns the area of the rectangle.
-  double get area => _width * _height;
 }
 
-//?--------------------------------------------------------------------------------------------------------------------
+//?---------------------------------------------------------------------------------------------------
+//! Abstract class `Shape` with an abstract method and a regular method
 
-//! Summary
-// Getters retrieve private field values, and setters modify them, enabling controlled access and encapsulation in Dart classes.
+abstract class Shape {
+  //! Abstract method that must be implemented by subclasses
+  void draw();
+
+  //! Regular method with an implementation
+  void describe() {
+    print("I am a shape.");
+  }
+}
+
+//?---------------------------------------------------------------------------------------------------
+//! Concrete subclass `Circle` that extends `Shape` and provides an implementation for `draw()`
+
+class Circle extends Shape {
+  @override
+  void draw() {
+    print("Drawing a circle.");
+  }
+}
+
+//?---------------------------------------------------------------------------------------------------
+//! Concrete subclass `Square` that extends `Shape` and provides an implementation for `draw()`
+
+class Square extends Shape {
+  @override
+  void draw() {
+    print("Drawing a square.");
+  }
+}
+
+//?---------------------------------------------------------------------------------------------------
+//! Another concrete subclass `Triangle` that extends `Shape` and provides an implementation for `draw()`
+
+class Triangle extends Shape {
+  @override
+  void draw() {
+    print("Drawing a triangle.");
+  }
+}
+
+//?---------------------------------------------------------------------------------------------------
+//! Another concrete subclass `Rectangle` that extends `Shape` and provides an implementation for `draw()`
+
+class Rectangle extends Shape {
+  @override
+  void draw() {
+    print("Drawing a rectangle.");
+  }
+}
+
+//?---------------------------------------------------------------------------------------------------
+//! Abstract class `Vehicle` with multiple abstract methods
+
+abstract class Vehicle {
+  //! Abstract method that must be implemented by subclasses
+  void start();
+
+  //! Abstract method that must be implemented by subclasses
+  void stop();
+}
+
+//?---------------------------------------------------------------------------------------------------
+//! Concrete subclass `Car` that extends `Vehicle` and provides implementations for `start()` and `stop()`
+
+class Car extends Vehicle {
+  @override
+  void start() {
+    print("Car started.");
+  }
+
+  @override
+  void stop() {
+    print("Car stopped.");
+  }
+}
+
+//?---------------------------------------------------------------------------------------------------
+
+//! Concrete subclass `Truck` that extends `Vehicle` and provides implementations for `start()` and `stop()`
+
+class Truck extends Vehicle {
+  @override
+  void start() {
+    print("Truck started.");
+  }
+
+  @override
+  void stop() {
+    print("Truck stopped.");
+  }
+}
+
+//?---------------------------------------------------------------------------------------------------
+//! Concrete subclass `Motorcycle` that extends `Vehicle` and provides implementations for `start()` and `stop()`
+
+class Motorcycle extends Vehicle {
+  @override
+  void start() {
+    print("Motorcycle started.");
+  }
+
+  @override
+  void stop() {
+    print("Motorcycle stopped.");
+  }
+}
+//?---------------------------------------------------------------------------------------------------
+//! Concrete subclass `Scooter` that extends `Vehicle` and provides implementations for `start()` and `stop()`
+
+class Scooter extends Vehicle {
+  @override
+  void start() {
+    print("Scooter started.");
+  }
+
+  @override
+  void stop() {
+    print("Scooter stopped.");
+  }
+}
+//?---------------------------------------------------------------------------------------------------
+/*
+! summary
+
+* Abstraction hides complex implementation details by defining abstract classes and methods,
+* which must be implemented by subclasses. Polymorphism allows objects of different subclasses
+* to be treated as objects of a common superclass, enabling methods to behave differently
+* based on the object’s actual class, promoting flexibility and reusability.
+ */
