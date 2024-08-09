@@ -40,7 +40,7 @@ Click on a topic below to access the detailed explanations and code examples.
 
 ### Basics
 
-1. [Variables](https://github.com/MAHMOUDELSAYED69/Dart-course/commit/a4daf1a1b35ece913fa9fd63e0da411cf9521146/lib/main.dart)
+1. [Variables](https://github.com/MAHMOUDELSAYED69/Dart-Course/blob/3b3b9093e659d7bdc2c1eedaba88108fb7892d15/lib/main.dart)
 2. [Print](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/b4b4651323b52cf72f328142815380bd7b162074/lib/main.dart)
 3. [Data Types](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/5cfb678b64d20664c14e9d61bf5e338f5871f8f7/lib/main.dart)
 4. [Arithmetic, Relational, and Logical Operations](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/937af4b898a6e88cbde5d873ee7da812e2fb4e03/lib/main.dart)
@@ -68,9 +68,10 @@ Click on a topic below to access the detailed explanations and code examples.
 ### Asynchronous Programming
 
 21. [Future, async/await, multiple Futures, and Streams](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/2a5198671006997208c0bebe772c26c48194b68d/lib/main.dart)
+22. [Isolate](https://github.com/MAHMOUDELSAYED69/Dart-Course/blob/9edafebb8f7cbb90f6460f89f10d41376707f64e/lib/main.dart)
 
 ## Additional Resources
-For more content and in-depth information about Dart, visit the official [Dart website](https://dart.dev).
+For more content and in-depth information about Dart, visit the official [Dart website](https://dart.dev/guides).
 
 Happy learning! 🚀
 ## Contact
