@@ -4,6 +4,10 @@
 </div>
 Welcome to the Dart Programming Course! This course is designed to provide a comprehensive introduction to the Dart programming language, covering fundamental concepts, object-oriented programming (OOP), and asynchronous programming. Whether you're a beginner looking to get started with Dart or an experienced developer aiming to deepen your understanding, this course has something for everyone.
 
+<div style="display: flex; align-items: center;">
+ <img src="https://github.com/user-attachments/assets/33aeb049-d276-4aca-8622-521ee1c7eb44" alt="dart" style="width: 50%; margin-right: 20px;">
+</div>
+
 ## About the Course
 
 Dart is a versatile language created by Google, widely used for building mobile, desktop, backend, and web applications. It is the primary language for Flutter, Google's UI toolkit for crafting natively compiled applications for mobile, web, and desktop from a single codebase.
@@ -38,7 +42,7 @@ Click on a topic below to access the detailed explanations and code examples.
 
 1. [Variables](https://github.com/MAHMOUDELSAYED69/Dart-course/commit/a4daf1a1b35ece913fa9fd63e0da411cf9521146/lib/main.dart)
 2. [Print](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/b4b4651323b52cf72f328142815380bd7b162074/lib/main.dart)
-3. [Data Types in Dart](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/5cfb678b64d20664c14e9d61bf5e338f5871f8f7/lib/main.dart)
+3. [Data Types](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/5cfb678b64d20664c14e9d61bf5e338f5871f8f7/lib/main.dart)
 4. [Arithmetic, Relational, and Logical Operations](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/937af4b898a6e88cbde5d873ee7da812e2fb4e03/lib/main.dart)
 5. [Control Flow part 1: if, and switch](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/6e785a9611ec747ab5d01fc0a5ab170b8754c04f/lib/main.dart)
 6. [Collection Data Types](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/0463324febf2a05346886883863619684d265f7e/lib/main.dart)
@@ -52,10 +56,10 @@ Click on a topic below to access the detailed explanations and code examples.
 
 ### Object-Oriented Programming (OOP)
 
-13. [Classes and Objects in Dart](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/373f42d8547d8c5c212bc05e60cf089f4f630b5f/lib/main.dart)
+13. [Classes and Objects](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/373f42d8547d8c5c212bc05e60cf089f4f630b5f/lib/main.dart)
 14. [Instance and Constructor](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/561d94b85f52734c52302f7f33aef1171d510e1d/lib/main.dart)
 15. [Inheritance, Overriding and super constructor](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/71959d6d203ed0e91f50fe0cf65bcf768c4c062f/lib/main.dart)
-16. [Named Constructor, Anonymous Object, Encapsulation, and this vs. super](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/ec361924df422810225904d2a0856b1069a1bf3f/lib/main.dart)
+16. [Named Constructor, Anonymous Object, Encapsulation, this vs. super](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/ec361924df422810225904d2a0856b1069a1bf3f/lib/main.dart)
 17. [More about Encapsulation (Getters & Setters)](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/581bdad252e116add57d64cb48b5464c3dc8e3a3/lib/main.dart)
 18. [Abstract and Polymorphism](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/1b7e4ddd5e14a720471f57f027fe3d328eed2b7d/lib/main.dart)
 19. [Implements (interfaces) and Mixins](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/dbc10571491d5833fb18bef078b6515f00ff9d7c/lib/main.dart)
@@ -66,15 +70,12 @@ Click on a topic below to access the detailed explanations and code examples.
 21. [Future, async/await, multiple Futures, and Streams](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/2a5198671006997208c0bebe772c26c48194b68d/lib/main.dart)
 
 ## Additional Resources
-
 For more content and in-depth information about Dart, visit the official [Dart website](https://dart.dev).
 
-## License
-
-This course is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
+Happy learning! 🚀
 ## Contact
 
 For any questions or feedback, please reach out via email: [gcfjxvkj@gmail.com](gcfjxvkj@gmail.com)
 
-Happy learning!
+
 
