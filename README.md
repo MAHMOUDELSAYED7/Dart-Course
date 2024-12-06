@@ -40,35 +40,35 @@ Click on a topic below to access the detailed explanations and code examples.
 
 ### Basics
 
-1. [Variables](https://github.com/MAHMOUDELSAYED69/Dart-Course/blob/3b3b9093e659d7bdc2c1eedaba88108fb7892d15/lib/main.dart)
-2. [Print](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/b4b4651323b52cf72f328142815380bd7b162074/lib/main.dart)
-3. [Data Types](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/5cfb678b64d20664c14e9d61bf5e338f5871f8f7/lib/main.dart)
-4. [Arithmetic, Relational, and Logical Operations](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/937af4b898a6e88cbde5d873ee7da812e2fb4e03/lib/main.dart)
-5. [Control Flow part 1: if, and switch](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/6e785a9611ec747ab5d01fc0a5ab170b8754c04f/lib/main.dart)
-6. [Collection Data Types](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/0463324febf2a05346886883863619684d265f7e/lib/main.dart)
-7. [Control Flow part 2: for, while, and do while](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/a3318bf3ac574f76cb4b41fc10924171b6b6c8fd/lib/main.dart)
-8. [Dot operator (.) properties and methods](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/5ba3a1f4cc570f17c103ad69dae13a31f831d322/lib/main.dart)
-9. [Null Safety](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/f0312e639268e8896ecc099b61e0d9ba80bda965/lib/main.dart)
-10. [Function](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/80a290ab6dfd6e7e030937782e14f7d9ee9780ce/lib/main.dart)
-11. [Exception Handling](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/561f04bb9cb316101b83758fd4685f9d934f5a08/lib/main.dart)
-12. [Complete the missing parts](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/5dc89c9d6362e5b5513e97022a1ef87e8ec108fa/lib/main.dart)
+1. [Variables](https://github.com/MAHMOUDELSAYED7/Dart-Course/blob/3b3b9093e659d7bdc2c1eedaba88108fb7892d15/lib/main.dart)
+2. [Print](https://github.com/MAHMOUDELSAYED7/Dart-course/blob/b4b4651323b52cf72f328142815380bd7b162074/lib/main.dart)
+3. [Data Types](https://github.com/MAHMOUDELSAYED7/Dart-course/blob/5cfb678b64d20664c14e9d61bf5e338f5871f8f7/lib/main.dart)
+4. [Arithmetic, Relational, and Logical Operations](https://github.com/MAHMOUDELSAYED7/Dart-course/blob/937af4b898a6e88cbde5d873ee7da812e2fb4e03/lib/main.dart)
+5. [Control Flow part 1: if, and switch](https://github.com/MAHMOUDELSAYED7/Dart-course/blob/6e785a9611ec747ab5d01fc0a5ab170b8754c04f/lib/main.dart)
+6. [Collection Data Types](https://github.com/MAHMOUDELSAYED7/Dart-course/blob/0463324febf2a05346886883863619684d265f7e/lib/main.dart)
+7. [Control Flow part 2: for, while, and do while](https://github.com/MAHMOUDELSAYED7/Dart-course/blob/a3318bf3ac574f76cb4b41fc10924171b6b6c8fd/lib/main.dart)
+8. [Dot operator (.) properties and methods](https://github.com/MAHMOUDELSAYED7/Dart-course/blob/5ba3a1f4cc570f17c103ad69dae13a31f831d322/lib/main.dart)
+9. [Null Safety](https://github.com/MAHMOUDELSAYED7/Dart-course/blob/f0312e639268e8896ecc099b61e0d9ba80bda965/lib/main.dart)
+10. [Function](https://github.com/MAHMOUDELSAYED7/Dart-course/blob/80a290ab6dfd6e7e030937782e14f7d9ee9780ce/lib/main.dart)
+11. [Exception Handling](https://github.com/MAHMOUDELSAYED7/Dart-course/blob/561f04bb9cb316101b83758fd4685f9d934f5a08/lib/main.dart)
+12. [Complete the missing parts](https://github.com/MAHMOUDELSAYED7/Dart-course/blob/5dc89c9d6362e5b5513e97022a1ef87e8ec108fa/lib/main.dart)
 
 
 ### Object-Oriented Programming (OOP)
 
-13. [Classes and Objects](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/373f42d8547d8c5c212bc05e60cf089f4f630b5f/lib/main.dart)
-14. [Instance and Constructor](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/561d94b85f52734c52302f7f33aef1171d510e1d/lib/main.dart)
-15. [Inheritance, Overriding and super constructor](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/71959d6d203ed0e91f50fe0cf65bcf768c4c062f/lib/main.dart)
-16. [Named Constructor, Anonymous Object, Encapsulation, this vs. super](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/ec361924df422810225904d2a0856b1069a1bf3f/lib/main.dart)
-17. [More about Encapsulation (Getters & Setters)](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/581bdad252e116add57d64cb48b5464c3dc8e3a3/lib/main.dart)
-18. [Abstract and Polymorphism](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/1b7e4ddd5e14a720471f57f027fe3d328eed2b7d/lib/main.dart)
-19. [Implements (interfaces) and Mixins](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/dbc10571491d5833fb18bef078b6515f00ff9d7c/lib/main.dart)
-20. [Enums](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/55c79df5603785ec19e3fb892c0c409442f4f7e1/lib/main.dart)
+13. [Classes and Objects](https://github.com/MAHMOUDELSAYED7/Dart-course/blob/373f42d8547d8c5c212bc05e60cf089f4f630b5f/lib/main.dart)
+14. [Instance and Constructor](https://github.com/MAHMOUDELSAYED7/Dart-course/blob/561d94b85f52734c52302f7f33aef1171d510e1d/lib/main.dart)
+15. [Inheritance, Overriding and super constructor](https://github.com/MAHMOUDELSAYED7/Dart-course/blob/71959d6d203ed0e91f50fe0cf65bcf768c4c062f/lib/main.dart)
+16. [Named Constructor, Anonymous Object, Encapsulation, this vs. super](https://github.com/MAHMOUDELSAYED7/Dart-course/blob/ec361924df422810225904d2a0856b1069a1bf3f/lib/main.dart)
+17. [More about Encapsulation (Getters & Setters)](https://github.com/MAHMOUDELSAYED7/Dart-course/blob/581bdad252e116add57d64cb48b5464c3dc8e3a3/lib/main.dart)
+18. [Abstract and Polymorphism](https://github.com/MAHMOUDELSAYED7/Dart-course/blob/1b7e4ddd5e14a720471f57f027fe3d328eed2b7d/lib/main.dart)
+19. [Implements (interfaces) and Mixins](https://github.com/MAHMOUDELSAYED7/Dart-course/blob/dbc10571491d5833fb18bef078b6515f00ff9d7c/lib/main.dart)
+20. [Enums](https://github.com/MAHMOUDELSAYED7/Dart-course/blob/55c79df5603785ec19e3fb892c0c409442f4f7e1/lib/main.dart)
 
 ### Asynchronous Programming
 
-21. [Future, async/await, multiple Futures, and Streams](https://github.com/MAHMOUDELSAYED69/Dart-course/blob/2a5198671006997208c0bebe772c26c48194b68d/lib/main.dart)
-22. [Isolate](https://github.com/MAHMOUDELSAYED69/Dart-Course/blob/9edafebb8f7cbb90f6460f89f10d41376707f64e/lib/main.dart)
+21. [Future, async/await, multiple Futures, and Streams](https://github.com/MAHMOUDELSAYED7/Dart-course/blob/2a5198671006997208c0bebe772c26c48194b68d/lib/main.dart)
+22. [Isolate](https://github.com/MAHMOUDELSAYED7/Dart-Course/blob/9edafebb8f7cbb90f6460f89f10d41376707f64e/lib/main.dart)
 
 ## Additional Resources
 For more content and in-depth information about Dart, visit the official [Dart website](https://dart.dev/guides).
@@ -76,7 +76,7 @@ For more content and in-depth information about Dart, visit the official [Dart w
 Happy learning! 🚀
 ## Contact
 
-For any questions or feedback, please reach out via email: [gcfjxvkj@gmail.com](gcfjxvkj@gmail.com)
+For any questions or feedback, please reach out via email: [mahmoudelsayed.dev@gmail.com](mahmoudelsayed.dev@gmail.com)
 
 
 
